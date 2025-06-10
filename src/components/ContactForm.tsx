@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,21 +14,37 @@ const ContactForm = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
+    const res = await fetch("https://formspree.io/f/xldjevzb", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { 
+        "Content-Type": "application/json",
+        Accept: "application/json" 
+      },
     });
 
-    setFormData({ name: "", email: "", message: "" });
+    if (res.ok) {
+      setSuccess(true);
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong. ❌",
+        variant: "destructive",
+      });
+    }
+
     setIsSubmitting(false);
   };
 
@@ -99,6 +114,9 @@ const ContactForm = () => {
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
+          {success && (
+            <p className="text-green-600">Your message has been sent! I'll get back to you soon.</p>
+          )}
         </form>
       </CardContent>
     </Card>
