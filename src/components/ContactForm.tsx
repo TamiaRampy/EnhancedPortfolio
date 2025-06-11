@@ -21,12 +21,16 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("message", formData.message);
+
     const res = await fetch("https://formspree.io/f/xldjevzb", {
       method: "POST",
-      body: JSON.stringify(formData),
-      headers: { 
-        "Content-Type": "application/json",
-        Accept: "application/json" 
+      body: form,
+      headers: {
+        Accept: "application/json"
       },
     });
 
