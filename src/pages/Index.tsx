@@ -13,7 +13,7 @@ const projects = [
     title: "Resource System",
     description: "Full-stack resource management system with React, Node.js, and Stripe integration. Features include user authentication, resource management, and order processing.",
     technologies: ["HTML", "Node.js", "Firebase", "JavaScript", "CSS"],
-    githubUrl: "https://github.com/yourusername/ecommerce",
+    githubUrl: "https://github.com/Tashreeq12/SkillsBridge2.git",
     liveUrl: "https://xhantimbula.github.io/CodeCrussadersDigital/",
     image: "/Digital.png"
   },
