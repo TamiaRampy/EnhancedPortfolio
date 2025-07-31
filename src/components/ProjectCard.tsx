@@ -23,32 +23,38 @@ const ProjectCard = ({ project, delay }: ProjectCardProps) => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <Card 
-      className="glass border-primary/20 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:scale-105 group animate-fade-scale"
+    <Card
+      className="glass border-primary/20 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:scale-105 group animate-fade-scale h-full flex flex-col"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <CardContent className="space-y-4">
+      <CardContent className="flex flex-col h-full p-6">
         {/* Project Title */}
-        <h3 className="text-xl font-semibold text-black mb-2 text-center">{project.title}</h3>
+        <h3 className="text-xl font-semibold text-black mb-4 text-center">{project.title}</h3>
 
         {/* Show video if toggled, otherwise show image */}
-        {project.video && showVideo ? (
-          <video
-            src={project.video}
-            controls
-            autoPlay
-            className="w-full rounded-lg shadow"
-            poster={project.image}
-          />
-        ) : (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full rounded-lg shadow"
-          />
-        )}
+        <div className="mb-4">
+          {project.video && showVideo ? (
+            <video
+              src={project.video}
+              controls
+              autoPlay
+              className="w-full h-48 object-cover rounded-lg shadow"
+              poster={project.image}
+            />
+          ) : (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-48 object-cover rounded-lg shadow"
+            />
+          )}
+        </div>
 
-        <div className="flex flex-wrap gap-2">
+        {/* Project Description */}
+        <p className="text-muted-foreground text-sm mb-4 flex-grow">{project.description}</p>
+
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech) => (
             <Badge
               key={tech}
@@ -59,8 +65,9 @@ const ProjectCard = ({ project, delay }: ProjectCardProps) => {
             </Badge>
           ))}
         </div>
-        
-        <div className="flex gap-3 pt-4">
+
+        {/* Buttons - Always at bottom */}
+        <div className="flex gap-3 mt-auto">
           <Button
             variant="outline"
             size="sm"
