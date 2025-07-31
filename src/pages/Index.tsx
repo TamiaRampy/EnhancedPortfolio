@@ -38,7 +38,7 @@ const projects = [
     title: "CAPACITI Placement Portal",
     description: "A full-stack job placement platform for graduates, built using React, Firebase, Supabase, and Tailwind CSS. It features user authentication, profile management, CV uploads, job applications, interviews, and real-time placement tracking.",
     technologies: ["React", "TypeScript", "Firebase", "Supabase", "Tailwind CSS"],
-    githubUrl: "https://github.com/TamiaRampy/CAPACITI-Placement-Portal",
+    githubUrl: "https://github.com/Ricky21007/Placement-portal",
     liveUrl: "https://capacitiplacementportal.netlify.app",
     image: "https://cdn.builder.io/api/v1/image/assets%2Fdabfba3b76404070a0a969852649639b%2Ff6e5e749b22c42e897d5c31298906f8f?format=webp&width=800"
   }
