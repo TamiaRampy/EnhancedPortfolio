@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -40,7 +39,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold gradient-text">
-            Tamia Rampy
+            Tamia Ramplin
           </div>
 
           {/* Desktop Navigation */}
